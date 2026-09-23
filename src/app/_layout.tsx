@@ -1,32 +1,30 @@
-import { DarkTheme, DefaultTheme, Tabs, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { Tabs } from 'expo-router';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-
-SplashScreen.preventAutoHideAsync();
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <Tabs screenOptions={{ headerShown: false }}>
-        <Tabs.Screen
-          name="index"
-          options={{
-            title: 'Home',
-            tabBarLabel: 'Home',
-          }}
-        />
-        <Tabs.Screen
-          name="student"
-          options={{
-            title: 'Student',
-            tabBarLabel: 'Student',
-          }}
-        />
-      </Tabs>
-    </ThemeProvider>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: '#1F2937',
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <Ionicons name="home" size={28} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="student"
+        options={{
+          title: 'Danh sách Sinh viên',
+          tabBarIcon: ({ color }) => <Ionicons name="person" size={28} color={color} />,
+        }}
+      />
+    </Tabs>
   );
 }
