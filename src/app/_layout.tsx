@@ -1,15 +1,13 @@
 import { Tabs } from 'expo-router';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#1F2937',
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
@@ -21,8 +19,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="student"
         options={{
-          title: 'Danh sách Sinh viên',
-          tabBarIcon: ({ color }) => <Ionicons name="person" size={28} color={color} />,
+          title: 'Sinh viên',
+          tabBarIcon: ({ color }) => <Ionicons name="school" size={28} color={color} />,
         }}
       />
     </Tabs>
